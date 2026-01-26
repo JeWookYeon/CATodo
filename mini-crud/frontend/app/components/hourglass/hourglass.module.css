@@ -1,0 +1,118 @@
+.wrap {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  padding: 18px 18px 20px;
+  position: relative;
+}
+
+.headerRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-black);
+}
+
+.sub {
+  font-size: 12px;
+  color: var(--c-muted);
+}
+
+.hourglass {
+  width: min(520px, 100%);
+  margin: 0 auto;
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.50);
+  overflow: hidden;
+}
+
+.top,
+.bottom {
+  height: 220px;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+}
+
+.top {
+  /* 위쪽 그릇: 아래로 좁아지는 형태 */
+  clip-path: polygon(10% 0%, 90% 0%, 65% 100%, 35% 100%);
+}
+
+.bottom {
+  /* 아래쪽 그릇: 위로 좁아지는 형태 */
+  clip-path: polygon(35% 0%, 65% 0%, 90% 100%, 10% 100%);
+}
+
+.throat {
+  height: 28px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: rgba(18, 18, 18, 0.04);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* ✅ 24칸(1칸=1시간)용 그리드 */
+.hourGrid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(24, 1fr);
+  gap: 4px;
+  align-content: stretch;
+}
+
+.hourBase,
+.hourFilledTop,
+.hourFilledBottom {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+/* 옅은 회색(기본 바탕) */
+.hourBase {
+  background: rgba(18, 18, 18, 0.10);
+}
+
+/* ✅ 위(TOP): 남은 시간(짙은 회색) */
+.hourFilledTop {
+  background: rgba(18, 18, 18, 0.36);
+}
+
+/* ✅ 아래(BOTTOM): 지난 시간(짙은 회색) */
+.hourFilledBottom {
+  background: rgba(245, 125, 39, 0.55);
+}
+
+/* falling grain (1개만) */
+.falling {
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: rgba(245, 125, 39, 0.85);
+  animation: fall 950ms linear forwards;
+  position: absolute;
+  top: -6px;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}

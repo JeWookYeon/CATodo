@@ -2,8 +2,8 @@ import os
 import pymysql
 
 def get_conn():
-    try:
-        conn = pymysql.connect(
+        
+    return pymysql.connect(
             host=os.getenv("DB_HOST", "localhost"),
             port=int(os.getenv("DB_PORT", "3307")),
             user=os.getenv("DB_USER", "app"),
@@ -13,7 +13,4 @@ def get_conn():
             cursorclass=pymysql.cursors.DictCursor,
             autocommit=True,
         )
-        return conn
-    execute:
-        return False
 
