@@ -70,7 +70,7 @@ export default function CrudClient() {
         <div>
           <h1 className={styles.title}>CATodo</h1>
           <p className={styles.sub}>
-            삼색고양이 팔레트 · 투두는 왼쪽, 모래시계는 오른쪽
+            당신이 해야할 일은 무엇인가요?
           </p>
         </div>
       </div>
