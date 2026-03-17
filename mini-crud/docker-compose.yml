@@ -12,17 +12,23 @@ services:
     volumes:
       - ./dbdata:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "127.0.0.1", "-uroot", "-proot1234"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
 
   backend:
     build: ./backend
     container_name: mini_api
-
     env_file: .env
     depends_on:
       db:
-        condition: service_started
+        condition: service_healthy
     ports:
       - "8000:8000"
+    shm_size: "1gb"
 
   frontend:
     build: ./frontend
